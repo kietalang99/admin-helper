@@ -2,6 +2,8 @@ from selenium import webdriver
 import unittest
 import time
 
+from Pages.loginPage import LoginPage
+
 class loginTest(unittest.TestCase):
 
     @classmethod
@@ -11,10 +13,12 @@ class loginTest(unittest.TestCase):
         cls.driver.maximize_window()
 
     def test_login_valid(self):
-        self.driver.get("https://admin-helper-f21c1.web.app/login")
-        self.driver.find_element_by_xpath("//input[@type='email']").send_keys("admin@gmail.com")
-        self.driver.find_element_by_xpath("//input[@type='password']").send_keys("123456")
-        self.driver.find_element_by_xpath("//button[@type='submit']").click()
+        driver = self.driver
+        driver.get("https://admin-helper-f21c1.web.app/login")
+        login = LoginPage(driver)
+        login.enter_email("admin@gmail.com")
+        login.enter_password("123456")
+        login.click_login()
         time.sleep(2)
 
     @classmethod
