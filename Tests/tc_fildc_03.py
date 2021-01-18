@@ -26,4 +26,4 @@ class filterByDeviceCategory(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test filter by Phone category is completed")
+        print("Test filter by Phone category was completed")
