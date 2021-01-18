@@ -17,7 +17,7 @@ class filterByStatus(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_filter_status_02(self):
+    def test_filter_status_04(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
         self.driver.find_element_by_xpath("//select[@id='device-status']/option[text()=' In inventory ']").click()
         time.sleep(2)
