@@ -17,7 +17,7 @@ class loginTest(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_filter_device(self):
+    def test_filter_status_01(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
         self.driver.find_element_by_xpath("//select[@id='device-status']/option[@value='ASSIGNED']").click()
         time.sleep(2)
