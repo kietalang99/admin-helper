@@ -19,7 +19,7 @@ class loginTest(unittest.TestCase):
 
     def test_filter_status_01(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
-        self.driver.find_element_by_xpath("//select[@id='device-status']/option[@value='ASSIGNED']").click()
+        self.driver.find_element_by_xpath("//select[@id='device-status']/option[text()='All']").click()
         time.sleep(2)
 
     @classmethod
