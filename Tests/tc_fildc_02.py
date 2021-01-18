@@ -17,7 +17,7 @@ class filterByDeviceCategory(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_filter_device_category_01(self):
+    def test_filter_device_category_02(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
         self.driver.find_element_by_xpath("//select[@id='device-category']/option[text()=' Laptop ']").click()
         time.sleep(2)
