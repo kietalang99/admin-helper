@@ -3,7 +3,7 @@ import unittest
 import time
 from Pages.loginPage import LoginPage
 
-class loginTest(unittest.TestCase):
+class filterByStatus(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
