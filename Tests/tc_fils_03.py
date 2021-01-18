@@ -26,4 +26,4 @@ class filterByStatus(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test completed")
+        print("Test filter by Discarded status was completed")
