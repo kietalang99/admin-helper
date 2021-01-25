@@ -35,4 +35,4 @@ class createDevice(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test error message display when enter more than 21 charaters in device name completed")
+        print("Test error message display when enter more than 21 characters in device name completed")
