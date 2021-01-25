@@ -26,4 +26,4 @@ class filterByDeviceCategory(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test filter by Monitor category was completed")
+        print("Test not result displayed was completed")
