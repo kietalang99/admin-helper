@@ -3,7 +3,7 @@ import unittest
 import time
 from Pages.loginPage import LoginPage
 
-class filterByDeviceCategory(unittest.TestCase):
+class filterByStatus(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -17,13 +17,13 @@ class filterByDeviceCategory(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_filter_device_category_01(self):
+    def test_filter_status_04(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
-        self.driver.find_element_by_xpath("//select[@id='device-category']/option[text()='All']").click()
+        self.driver.find_element_by_xpath("//select[@id='device-status']/option[text()=' In inventory ']").click()
         time.sleep(2)
 
     @classmethod
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test filter by All category completed")
+        print("Test no result display completed")
