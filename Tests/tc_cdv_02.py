@@ -22,7 +22,9 @@ class createDevice(unittest.TestCase):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
         time.sleep(2)
         self.driver.find_element_by_xpath("//main//div/button[@type='button']").click()
-        self.driver.find_element_by_xpath("//button[@type='submit']").click()
+        disabled_button = self.driver.find_element_by_xpath("//button[@type='submit']")
+        disabled_button.is_enabled()
+        print("Button already disabled")
         time.sleep(2)
 
     @classmethod
