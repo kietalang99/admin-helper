@@ -1,6 +1,7 @@
 from selenium import webdriver
 import unittest
 import time
+from selenium.webdriver.support.ui import Select
 from Pages.loginPage import LoginPage
 
 class filterByDeviceCategory(unittest.TestCase):
@@ -19,8 +20,12 @@ class filterByDeviceCategory(unittest.TestCase):
 
     def test_filter_device_category_02(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
-        self.driver.find_element_by_xpath("//select[@id='device-category']/option[text()=' Laptop ']").click()
-        time.sleep(2)
+        select = Select(self.driver.find_element_by_id("device-category"))
+        select.select_by_index(0);
+        select.select_by_value("1");
+        select.select_by_visible_text(" Phone ");
+
+        time.sleep(4)
 
     @classmethod
     def tearDownClass(cls):
