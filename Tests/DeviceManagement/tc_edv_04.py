@@ -1,13 +1,14 @@
 from selenium import webdriver
 import unittest
 import time
+from keyboard import press
 from Pages.loginPage import LoginPage
 
-class createDevice(unittest.TestCase):
 
+class editDevice(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(executable_path="C:/Users/Admin/PycharmProjects/admin/Drivers/chromedriver.exe")
+        cls.driver = webdriver.Chrome(executable_path="/Drivers/chromedriver.exe")
         cls.driver.maximize_window()
         driver = cls.driver
         driver.get("https://admin-helper-f21c1.web.app/login")
@@ -17,18 +18,16 @@ class createDevice(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_create_device_02(self):
-        time.sleep(2)
+    def test_edit_device_04(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
-        time.sleep(2)
-        self.driver.find_element_by_xpath("//main//div/button[@type='button']").click()
-        disabled_button = self.driver.find_element_by_xpath("//button[@type='submit']")
-        disabled_button.is_enabled()
-        print("Button already disabled")
+        self.driver.find_element_by_xpath('//*[@id="dropdownBtn0"]/i').click()
+        self.driver.find_element_by_xpath('//ah-device-table/div/div[3]/div[1]/div/div[5]/div/div/a[2]').click()
+        self.driver.find_element_by_xpath("//button[@aria-label='Close']").click()
+
         time.sleep(2)
 
     @classmethod
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test button create device disabled completed")
+        print("Test close edit device form was completed")

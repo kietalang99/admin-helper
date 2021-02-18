@@ -1,14 +1,13 @@
 from selenium import webdriver
 import unittest
 import time
-from selenium.webdriver.support.ui import Select
 from Pages.loginPage import LoginPage
 
-class filterByDeviceCategory(unittest.TestCase):
+class createDevice(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(executable_path="C:/Users/Admin/PycharmProjects/admin/Drivers/chromedriver.exe")
+        cls.driver = webdriver.Chrome(executable_path="/Drivers/chromedriver.exe")
         cls.driver.maximize_window()
         driver = cls.driver
         driver.get("https://admin-helper-f21c1.web.app/login")
@@ -18,17 +17,18 @@ class filterByDeviceCategory(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_filter_device_category_02(self):
+    def test_create_device_02(self):
+        time.sleep(2)
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
-        select = Select(self.driver.find_element_by_id("device-category"))
-        select.select_by_index(0);
-        select.select_by_value("1");
-        select.select_by_visible_text(" Phone ");
-
-        time.sleep(4)
+        time.sleep(2)
+        self.driver.find_element_by_xpath("//main//div/button[@type='button']").click()
+        disabled_button = self.driver.find_element_by_xpath("//button[@type='submit']")
+        disabled_button.is_enabled()
+        print("Button already disabled")
+        time.sleep(2)
 
     @classmethod
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test filter by category was completed")
+        print("Test button create device disabled completed")
