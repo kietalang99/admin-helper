@@ -15,7 +15,7 @@ class editDevice(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_create_device_01(self):
+    def test_edit_device_01(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
         
         time.sleep(2)
