@@ -8,7 +8,7 @@ class filterByStatus(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.driver = webdriver.Chrome(executable_path="/Drivers/chromedriver.exe")
+        cls.driver = webdriver.Chrome(executable_path="C:/Users/Admin/PycharmProjects/admin/Drivers/chromedriver.exe")
         cls.driver.maximize_window()
         driver = cls.driver
         driver.get("https://admin-helper-f21c1.web.app/login")
