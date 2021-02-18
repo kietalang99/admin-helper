@@ -1,10 +1,10 @@
 from selenium import webdriver
 import unittest
-import time
-from selenium.webdriver.support.ui import Select
 from Pages.loginPage import LoginPage
+from Pages.dayOffManagementPage import DayOffManagementPage
+from Utils.dayOffCategory import DayOffCategory
 
-class filterByStatus(unittest.TestCase):
+class filterDayOffManagement(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -18,18 +18,13 @@ class filterByStatus(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_filter_status_02(self):
-        self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
-        dropdown = Select(self.driver.find_element_by_id("device-status")).
-        dropdown.select_by_value("ASSIGNED");
-        time.sleep(2)
-        dropdown.select_by_visible_text(" Discarded ");
-        time.sleep(2)
-        dropdown.select_by_index(0)
-        time.sleep(2)
+    def test_filter_01(self):
+        self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[4]').click()
+        selection = DayOffCategory(self.driver)
+        selection.filter_list()
 
     @classmethod
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test filter by Status was completed")
+        print("Test filter function was completed")

@@ -1,5 +1,6 @@
 from keyboard import press
 import time
+from selenium.webdriver.support.ui import Select
 
 class DayOffManagementPage():
 
@@ -18,8 +19,8 @@ class DayOffManagementPage():
         time.sleep(3)
 
     def select_day_off_category(self, category):
-        dropdown = self.Select(self.driver.find_element_by_id(self.day_off_category_id))
-        dropdown.select_by_value(category)
+        Select(self.driver.find_element_by_id(self.day_off_category_id)).select_by_value(category)
+        time.sleep(3)
 
     def click_edit_day_off(self):
         self.driver.find_element_by_xpath(self.edit_day_off_path).click()
