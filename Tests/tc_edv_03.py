@@ -1,6 +1,7 @@
 from selenium import webdriver
 import unittest
 import time
+from keyboard import press
 from Pages.loginPage import LoginPage
 
 
@@ -23,15 +24,16 @@ class editDevice(unittest.TestCase):
         self.driver.find_element_by_xpath('//ah-device-table/div/div[3]/div[1]/div/div[5]/div/div/a[2]').click()
         self.driver.find_element_by_id("name").clear()
         self.driver.find_element_by_id("name").send_keys("a")
-        self.driver.find_element_by_id("price").click()
+        press("enter")
         self.driver.find_element_by_id("name").clear()
         self.driver.find_element_by_id("name").send_keys("laptoplaptoplaptoplaptoplaptoplaptoplaptoplaptop")
+        press("enter")
         self.driver.find_element_by_id("price").click()
         self.driver.find_element_by_id("price").send_keys("0")
-        self.driver.find_element_by_id("description").click()
+        press("enter")
         self.driver.find_element_by_id("price").clear()
         self.driver.find_element_by_id("price").send_keys("1234567891234567891234")
-        self.driver.find_element_by_id("description").click()
+        press("enter")
 
         time.sleep(2)
 
