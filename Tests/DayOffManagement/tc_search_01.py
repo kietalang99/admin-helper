@@ -1,8 +1,8 @@
 from selenium import webdriver
 import unittest
 import time
-from keyboard import press
 from Pages.loginPage import LoginPage
+from Pages.dayOffManagementPage import DayOffManagementPage
 
 class searchDayOffList(unittest.TestCase):
 
@@ -20,20 +20,11 @@ class searchDayOffList(unittest.TestCase):
 
     def test_search_01(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[4]').click()
-        self.driver.find_element_by_id("inlineFormInputGroupUsername").send_keys("admin")
-        press("enter")
-        time.sleep(4)
-        self.driver.find_element_by_id("inlineFormInputGroupUsername").clear()
-        self.driver.find_element_by_id("inlineFormInputGroupUsername").send_keys("2000")
-        press("enter")
-        time.sleep(3)
-        self.driver.find_element_by_id("inlineFormInputGroupUsername").clear()
-        self.driver.find_element_by_id("inlineFormInputGroupUsername").send_keys("user admin")
-        time.sleep(3)
-        self.driver.find_element_by_id("inlineFormInputGroupUsername").clear()
-        self.driver.find_element_by_id("inlineFormInputGroupUsername").send_keys(" ")
-        press("enter")
-        time.sleep(4)
+        search = DayOffManagementPage(self.driver)
+        search.enter_search_key("admin")
+        search.enter_search_key("2000")
+        search.enter_search_key("user admin")
+        search.enter_search_key(" ")
 
     @classmethod
     def tearDownClass(cls):
