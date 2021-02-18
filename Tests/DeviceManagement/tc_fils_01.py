@@ -20,7 +20,7 @@ class filterByStatus(unittest.TestCase):
 
     def test_filter_status_02(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
-        dropdown = Select(self.driver.find_element_by_id("device-status")).
+        dropdown = Select(self.driver.find_element_by_id("device-status"))
         dropdown.select_by_value("ASSIGNED");
         time.sleep(2)
         dropdown.select_by_visible_text(" Discarded ");
