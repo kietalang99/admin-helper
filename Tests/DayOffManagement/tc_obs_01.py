@@ -1,10 +1,10 @@
 from selenium import webdriver
 import unittest
 from Pages.loginPage import LoginPage
-from Pages.dayOffManagementPage import DayOffManagementPage
-from Utils.filter import DayOffCategory
+from selenium.webdriver.support.select import By
+import time
 
-class filterDayOffManagement(unittest.TestCase):
+class dayOffOrderBySort(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -18,13 +18,15 @@ class filterDayOffManagement(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_filter_01(self):
+    def test_day_off_sort_asc(self):
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[4]').click()
-        selection = DayOffCategory(self.driver)
-        selection.filter_list()
+        row_data = self.driver.find_elements_by_xpath("//table/tbody/tr/td[1]")
+        self.driver.find_element_by_xpath("//table/thead/tr/th[text()=' Name ']").click()
+        time.sleep(5)
+        print("Table before sort clicked: ")
+        for row in row_data:
+             print(row.text)
 
     @classmethod
     def tearDownClass(cls):
-        cls.driver.close()
         cls.driver.quit()
-        print("Test filter function was completed")
