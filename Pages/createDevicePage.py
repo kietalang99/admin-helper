@@ -1,4 +1,3 @@
-from keyboard import press
 import time
 from selenium.webdriver.support.ui import Select
 
@@ -21,7 +20,7 @@ class CreateDevicePage():
         self.driver.find_element_by_xpath(self.device_name_textbox_path).clear()
         self.driver.find_element_by_xpath(self.device_name_textbox_path).send_keys(name)
 
-    def enter_device_name(self, price):
+    def enter_price(self, price):
         self.driver.find_element_by_xpath(self.price_textbox_path).clear()
         self.driver.find_element_by_xpath(self.price_textbox_path).send_keys(price)
 
