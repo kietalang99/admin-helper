@@ -1,5 +1,5 @@
 from Pages.dayOffManagementPage import DayOffManagementPage
-from Pages.deviceManagementPage import DeviceManagemntPage
+from Pages.createDevicePage import DeviceManagemntPage
 
 class Filter():
 
