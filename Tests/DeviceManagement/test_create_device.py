@@ -105,8 +105,10 @@ class testcreateDevice(unittest.TestCase):
         driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
         create_device_form = CreateDevicePage(driver)
         create_device_form.click_create_device()
-        time.sleep(3)
         create_device_form.click_close()
+
+        check = driver.find_element_by_xpath("//h4[text()=' Create Device ']").is_displayed()
+        self.assertEquals(False, check)
 
     @classmethod
     def tearDownClass(cls):
