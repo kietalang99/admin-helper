@@ -3,6 +3,7 @@ import unittest
 import time
 from selenium.webdriver.support.ui import Select
 from Pages.loginPage import LoginPage
+from Pages.deviceMangementPage import DeviceManagementPage
 
 class filterByStatus(unittest.TestCase):
 
@@ -18,14 +19,23 @@ class filterByStatus(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_filter_status_02(self):
-        self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
-        dropdown = Select(self.driver.find_element_by_id("device-status"))
-        dropdown.select_by_value("ASSIGNED");
-        time.sleep(2)
-        dropdown.select_by_visible_text(" Discarded ");
-        time.sleep(2)
-        dropdown.select_by_index(0)
+    def test_filter_by_status(self):
+        driver = self.driver
+        device_management = DeviceManagementPage(driver)
+        driver.find_element_by_xpath(device_management.device_management_tab_path).click()
+
+        # Test filter by all status
+        device_management.filter_by_status("All")
+
+        # Test filter by Assigned status
+        device_management.filter_by_status(" Assigned ")
+
+        # Test filter by Discarded status
+        device_management.filter_by_status(" Discarded ")
+
+        # Test filter by In inventory status
+        device_management.filter_by_status(" In inventory ")
+
         time.sleep(2)
 
     @classmethod
