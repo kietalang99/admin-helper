@@ -1,4 +1,5 @@
 from selenium.webdriver.support.ui import Select
+import time
 
 class DeviceManagementPage():
     def __init__(self, driver):
@@ -49,3 +50,7 @@ class DeviceManagementPage():
 
     def click_collapsed(self):
         self.driver.find_element_by_xpath(self.collapsed_path).click()
+
+    def click_pagination(self, pagination):
+        self.driver.find_element_by_xpath(pagination).click()
+        time.sleep(3)

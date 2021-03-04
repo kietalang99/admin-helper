@@ -2,6 +2,7 @@ from selenium import webdriver
 import unittest
 import time
 from Pages.loginPage import LoginPage
+from Pages.deviceMangementPage import DeviceManagementPage
 
 class deviceManagementNavigation(unittest.TestCase):
     @classmethod
@@ -16,17 +17,23 @@ class deviceManagementNavigation(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_navigation_01(self):
-        self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
-        self.driver.find_element_by_xpath("//li[@class='pagination-last page-item']").click()
-        time.sleep(3)
-        self.driver.find_element_by_xpath("//li[@class='pagination-first page-item']").click()
-        time.sleep(3)
-        self.driver.find_element_by_xpath("//li[@class='pagination-next page-item']").click()
-        time.sleep(3)
-        self.driver.find_element_by_xpath("//li[@class='pagination-prev page-item']").click()
+    def test_navigation(self):
+        driver = self.driver
 
-        time.sleep(5)
+        device_management = DeviceManagementPage(driver)
+        driver.find_element_by_xpath(device_management.device_management_tab_path).click()
+
+        # Click on Last page
+        device_management.click_pagination("//li[@class='pagination-last page-item']")
+
+        # Click on first page
+        device_management.click_pagination("//li[@class='pagination-first page-item']")
+
+        # Click on next page
+        device_management.click_pagination("//li[@class='pagination-next page-item']")
+
+        # Click on previous page
+        device_management.click_pagination("//li[@class='pagination-prev page-item']")
 
     @classmethod
     def tearDownClass(cls):
