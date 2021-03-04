@@ -45,4 +45,4 @@ class filterByStatus(unittest.TestCase):
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test filter by Status was completed")
+        print("Test filter by Category was completed")
