@@ -3,8 +3,9 @@ import unittest
 import time
 from selenium.webdriver.support.ui import Select
 from Pages.loginPage import LoginPage
+from Pages.deviceMangementPage import DeviceManagementPage
 
-class filterByDeviceCategory(unittest.TestCase):
+class filterByStatus(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -18,17 +19,30 @@ class filterByDeviceCategory(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_filter_device_category_02(self):
-        self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[2]/a').click()
-        select = Select(self.driver.find_element_by_id("device-category"))
-        select.select_by_index(0);
-        select.select_by_value("1");
-        select.select_by_visible_text(" Phone ");
+    def test_filter_by_category(self):
+        driver = self.driver
+        device_management = DeviceManagementPage(driver)
+        driver.find_element_by_xpath(device_management.device_management_tab_path).click()
 
-        time.sleep(4)
+        # Test filter by all status
+        device_management.filter_by_category("All")
+
+        # Test filter Laptop category
+        device_management.filter_by_category(" Laptop ")
+
+        # Test filter Phone category
+        device_management.filter_by_category(" Phone ")
+
+        # Test filter by Tablet category
+        device_management.filter_by_category(" Tablet ")
+
+        # Test filter by In Monitor category
+        device_management.filter_by_category(" Monitor ")
+
+        time.sleep(2)
 
     @classmethod
     def tearDownClass(cls):
         cls.driver.close()
         cls.driver.quit()
-        print("Test filter by category was completed")
+        print("Test filter by Status was completed")
