@@ -18,12 +18,22 @@ class searchDayOffList(unittest.TestCase):
         login.click_login()
         cls.driver.implicitly_wait(10)
 
-    def test_search_01(self):
-        self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[4]').click()
-        search = DayOffManagementPage(self.driver)
+    def test_search(self):
+        driver = self.driver
+        driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[4]').click()
+        driver.implicitly_wait(2)
+        search = DayOffManagementPage(driver)
+
+        # Search by name
         search.enter_search_key("admin")
+
+        # Search by year
         search.enter_search_key("2000")
+
+        # Search by full name
         search.enter_search_key("user admin")
+
+        # Search with blank space
         search.enter_search_key(" ")
 
     @classmethod
