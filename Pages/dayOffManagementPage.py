@@ -11,6 +11,8 @@ class DayOffManagementPage():
         self.day_off_category_id = "day-off-type"
         self.edit_day_off_path = "//div//button/i[@class='cil-brush']"
         self.submit_time_off_path = "//div/button/i[@class='fa fa-calendar-plus-o']"
+        self.name_column_path = "//table/thead/tr/th[@class='col-name']"
+        self.birthday_column_path = "//table/thead/tr/th[@class='col-birthday']"
 
     def enter_search_key(self, key):
         self.driver.find_element_by_id(self.search_id).clear()

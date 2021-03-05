@@ -1,6 +1,7 @@
 from selenium import webdriver
 import unittest
 from Pages.loginPage import LoginPage
+from Pages.dayOffManagementPage import DayOffManagementPage
 from selenium.webdriver.support.select import By
 import time
 
@@ -19,13 +20,18 @@ class dayOffOrderBySort(unittest.TestCase):
         cls.driver.implicitly_wait(10)
 
     def test_day_off_sort_asc(self):
-        self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[4]').click()
-        row_data = self.driver.find_elements_by_xpath("//table/tbody/tr/td[1]")
-        self.driver.find_element_by_xpath("//table/thead/tr/th[text()=' Name ']").click()
-        time.sleep(5)
-        print("Table before sort clicked: ")
-        for row in row_data:
-             print(row.text)
+        driver = self.driver
+        driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[4]').click()
+
+        day_off_management = DayOffManagementPage(driver)
+
+        # Sort name column
+        driver.find_element_by_xpath(day_off_management.name_column_path).click()
+        time.sleep(2)
+
+        # Sort birthday column
+        driver.find_element_by_xpath(day_off_management.birthday_column_path).click()
+
 
     @classmethod
     def tearDownClass(cls):
