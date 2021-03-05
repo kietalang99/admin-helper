@@ -31,7 +31,7 @@ class dayOffOrderBySort(unittest.TestCase):
 
         # Sort birthday column
         driver.find_element_by_xpath(day_off_management.birthday_column_path).click()
-
+        time.sleep(2)
 
     @classmethod
     def tearDownClass(cls):
