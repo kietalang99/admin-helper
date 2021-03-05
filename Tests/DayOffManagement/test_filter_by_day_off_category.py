@@ -2,7 +2,6 @@ from selenium import webdriver
 import unittest
 from Pages.loginPage import LoginPage
 from Pages.dayOffManagementPage import DayOffManagementPage
-from Utils.filter import DayOffCategory
 
 class filterDayOffManagement(unittest.TestCase):
 
@@ -19,9 +18,18 @@ class filterDayOffManagement(unittest.TestCase):
         cls.driver.implicitly_wait(10)
 
     def test_filter_01(self):
+        driver = self.driver
         self.driver.find_element_by_xpath('//*[@id="sidebar"]/ul/li[4]').click()
-        selection = DayOffCategory(self.driver)
-        selection.filter_list()
+        day_off_management = DayOffManagementPage(driver)
+
+        # Filter by VACATION
+        day_off_management.select_day_off_category("VACATION")
+
+        # Filter by ILLNESS
+        day_off_management.select_day_off_category("ILLNESS")
+
+        # Filter by MATERNITY
+        day_off_management.select_day_off_category("MATERNITY")
 
     @classmethod
     def tearDownClass(cls):
