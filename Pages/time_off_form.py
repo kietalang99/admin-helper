@@ -6,6 +6,7 @@ class TimeOffForm():
     def __init__(self, driver):
         self.driver = driver
 
+        self.time_off_form_path = "//button/i[@class='fa fa-calendar-plus-o']"
         self.from_date_id = "exampleFormControlInput2"
         self.to_date_id = "exampleFormControlInput3"
         self.morning_checkbox_id = "defaultCheck1"
